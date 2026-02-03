@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For Manasa 💖</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(to right, #ff758c, #ff7eb3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 32px;
+      border-radius: 22px;
+      text-align: center;
+      width: 340px;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.25);
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      color: #ff4d6d;
+    }
+
+    p {
+      color: #444;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    button {
+      margin: 12px;
+      padding: 10px 24px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .yes {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    .no {
+      background: #ddd;
+    }
+
+    /* Hearts */
+    .heart {
+      position: fixed;
+      animation: float 6s linear infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh); opacity: 1; }
+      100% { transform: translateY(-10vh); opacity: 0; }
+    }
+
+    /* Popup */
+    .popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+    }
+
+    .popup-content {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      width: 320px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Music -->
+  <!-- Put your song in same folder and name it favorite.mp3 -->
+  <audio autoplay loop>
+    <source src="favorite.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="card" id="card">
+    <h1>Manasa 💕</h1>
+    <p>
+      I don’t need perfect moments…<br>
+      I just need <b>you</b> 🤍<br><br>
+      You changed my world without trying,<br>
+      and I can’t imagine my life without you 💫<br><br>
+      Will you be my Valentine? 🌹
+    </p>
+
+    <button class="yes" onclick="yesClick()">Yes 💖</button>
+    <button class="no" onmouseover="moveNo()">No 🙈</button>
+  </div>
+
+  <!-- Popup -->
+  <div class="popup" id="popup">
+    <div class="popup-content">
+      <h1>Manasa ❤️</h1>
+      <p>
+        I love uh chinodu… 💖<br><br>
+        plz nuvvu naku kavali.<br><br>
+        This isn’t just a moment,<br>
+        it’s my heart choosing you 💞<br><br>
+        — Forever yours,<br>
+        <b>Nandu Reddy</b>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    function yesClick() {
+      document.getElementById("card").innerHTML = `
+        <h1>I Love You 😘</h1>
+        <p>
+          You are my happiness,<br>
+          my peace,<br>
+          my everything 💝<br><br>
+          Happy Valentine’s Day ❤️
+        </p>
+      `;
+      setTimeout(() => {
+        document.getElementById("popup").style.display = "flex";
+      }, 1500);
+    }
+
+    function moveNo() {
+      const btn = document.querySelector(".no");
+      btn.style.left = Math.random() * 200 - 100 + "px";
+      btn.style.top = Math.random() * 200 - 100 + "px";
+    }
+
+    // MORE hearts 💖
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = Math.random() > 0.5 ? "❤️" : "💖";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (Math.random() * 30 + 15) + "px";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }, 200);
+  </script>
+
+</body>
+</html>
